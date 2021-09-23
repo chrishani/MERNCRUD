@@ -15,7 +15,7 @@ export default class Home extends Component {
     }
 
     retrievePost() {
-        axios.get("http://localhost:8000/post").then(res => {
+        axios.get("/post").then(res => {
             if (res.data.success) {
                 this.setState({
                     posts: res.data.existingPosts
@@ -39,10 +39,10 @@ export default class Home extends Component {
                     </thead>
                     <tbody>
                         {this.state.posts.map((posts, index) => (
-                            <tr>
+                            <tr key={index}>
                                 <th scope="row">{index + 1}</th>
                                 <td>
-                                    <a href={'/post/{posts._id}'} style={{ textDecoration: 'none' }}>
+                                    <a href={`/post/${posts._id}`} style={{ textDecoration: 'none' }}>
                                         {posts.topic}
                                     </a>
                                 </td>
