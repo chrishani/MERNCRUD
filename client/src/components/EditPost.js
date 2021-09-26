@@ -39,9 +39,9 @@ export default class EditPost extends Component {
             if (res.data.success){
                 alert("Post updated successfully");
                 this.setState({
-                    topic:"",
-                    description:"",
-                    postCategory:""
+                    topic:res.data.topic,
+                    description:res.data.description,
+                    postCategory:res.data.postCategory
                 });
             }
         }));
