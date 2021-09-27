@@ -32,10 +32,40 @@ export default class Home extends Component {
         });
     }
 
+    filterData(posts,searchKey) {
+        const result = posts.filter((post) => 
+            post.topic.toLowerCase.includes(searchKey)
+        );
+        this.setState({posts:result});
+    }
+
+    handleSearchArea = (e) => {
+        const searchKey = e.currentTarget.value;
+
+        axios.get("/post").then(res => {
+            if (res.data.success) {
+                this.filterData(res.data.existingPosts,searchKey);
+            }
+        });
+    }
+
     render() {
         return (
             <div className="container">
-                <p>All posts</p>
+                <div className="row">
+                    <div className="col-md-9 mt-2 mb-2">
+                        <p>All posts</p>
+                    </div>
+                    <div className="col-md-3 mt-2 mb-2">
+                        <input 
+                            class="form-control me-2" 
+                            type="search" 
+                            placeholder="Search" 
+                            aria-label="Search" 
+                            onChange={this.handleSearchArea}
+                        />
+                    </div>
+                </div>
                 <table className="table">
                     <thead>
                         <th scope="col">#</th>

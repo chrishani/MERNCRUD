@@ -10,11 +10,9 @@ export default class NavBar extends Component {
         };
     }
 
-    filterData (posts,searchKey) {
-        const result = posts.filter((post) =>
-            post.topic.includes(searchKey)
-        )
-        this.setState({posts:result})
+    filterData(posts,searchKey) {
+        const result = posts.filter((post) => post.topic.includes(searchKey));
+        this.setState({posts:result});
     }
 
     handleSearchArea = (e) => {
@@ -22,7 +20,7 @@ export default class NavBar extends Component {
 
         axios.get("/post").then(res => {
             if (res.data.success) {
-                this.filterData(res.data.existingPosts,searchKey)
+                this.filterData(res.data.existingPosts,searchKey);
             }
         });
     }
