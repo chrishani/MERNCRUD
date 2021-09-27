@@ -34,7 +34,9 @@ export default class Home extends Component {
 
     filterData(posts,searchKey) {
         const result = posts.filter((post) => 
-            post.topic.toLowerCase.includes(searchKey)
+            post.topic.toLowerCase().includes(searchKey)||
+            post.description.toLowerCase().includes(searchKey)||
+            post.postCategory.toLowerCase().includes(searchKey)
         );
         this.setState({posts:result});
     }
