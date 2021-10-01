@@ -27,7 +27,7 @@ export default class PostDetails extends Component {
     render() {
         const {topic,description,postCategory} = this.state.post;
         return (
-            <div style={{marginTop:'15px'}}>
+            <div style={{marginTop:'20px'}}>
                 <h4>{topic}</h4>
                 <hr/>
 
